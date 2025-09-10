@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - StyleSense AI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #181C23;
+            color: #ECF0F1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: transparent;
+        }
+        .header {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 24px;
+        }
+        nav {
+            margin-top: 12px;
+        }
+        .btn {
+            background: #2C3E50;
+            color: #ECF0F1;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: #E74C3C;
+            color: #fff;
+        }
+        .btn:hover {
+            background: #34495E;
+        }
+        .btn-primary:hover {
+            background: #C0392B;
+        }
+        .register-box {
+            background: #232A34;
+            color: #ECF0F1;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+            padding: 36px 32px 28px 32px;
+            margin-top: 40px;
+            min-width: 320px;
+            max-width: 350px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .register-box h2 {
+            margin-bottom: 18px;
+            color: #ECF0F1;
+            font-size: 1.6rem;
+        }
+        .auth-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .auth-form label {
+            color: #ECF0F1;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .auth-form input[type="email"],
+        .auth-form input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #34495E;
+            background: #2C3E50;
+            color: #ECF0F1;
+            font-size: 1rem;
+            margin-top: 4px;
+            margin-bottom: 8px;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .auth-form input[type="email"]:focus,
+        .auth-form input[type="password"]:focus {
+            border: 1.5px solid #E74C3C;
+        }
+        .auth-form button {
+            margin-top: 8px;
+            width: 100%;
+        }
+        @media (max-width: 500px) {
+            .register-box {
+                min-width: 90vw;
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Register</h1>
+            <nav>
+                <a href="home.html" class="btn">Home</a>
+                <a href="login.html" class="btn">Login</a>
+                <a href="index.html" class="btn">Try On Clothes</a>
+            </nav>
+        </header>
+        <main>
+            <div class="register-box">
+                <h2>Create Your Account</h2>
+                <form class="auth-form">
+                    <label>Email:
+                        <input type="email" required placeholder="Enter your email">
+                    </label>
+                    <label>Password:
+                        <input type="password" required placeholder="Enter your password">
+                    </label>
+                    <label>Confirm Password:
+                        <input type="password" required placeholder="Confirm your password">
+                    </label>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

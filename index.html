@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleSense AI - Virtual Try-On</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #181C23;
+            color: #ECF0F1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+        }
+        .app {
+            max-width: 1200px;
+            margin: 32px auto;
+            background: #232A34;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .header h1 {
+            color: #ECF0F1;
+            margin-bottom: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        .header p {
+            color: #B0B8C1;
+            margin-top: 4px;
+            font-size: 1.1rem;
+        }
+        .main-content {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+        }
+        .camera-section {
+            background: #232A34;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.18);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .camera-container {
+            position: relative;
+            width: 480px;
+            height: 360px;
+            background: #2C3E50;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+        #webcam, #overlay-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .demo-mode {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(44,62,80,0.85);
+            z-index: 2;
+        }
+        .demo-label {
+            color: #ECF0F1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 12px;
+        }
+        .camera-controls {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .btn {
+            background: #E74C3C;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary {
+            background: #27AE60;
+        }
+        .btn:hover {
+            background: #C0392B;
+        }
+        .btn-primary:hover {
+            background: #219150;
+        }
+        .clothing-section {
+            background: #232A34;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.18);
+            padding: 24px 18px;
+            min-width: 320px;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .clothing-section h2 {
+            color: #ECF0F1;
+            margin-bottom: 18px;
+            font-size: 1.5rem;
+        }
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .filter-btn {
+            background: #2C3E50;
+            color: #ECF0F1;
+            border: 2px solid #34495E;
+            border-radius: 5px;
+            padding: 7px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #E74C3C;
+            color: #fff;
+            border-color: #E74C3C;
+        }
+        .clothing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            width: 100%;
+        }
+        .clothing-item {
+            background: #181C23;
+            border-radius: 8px;
+            padding: 14px 8px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(44,62,80,0.10);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.2s, background 0.2s;
+        }
+        .clothing-item.selected, .clothing-item:hover {
+            border: 2px solid #E74C3C;
+            background: #232A34;
+        }
+        .clothing-item img, .clothing-item svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 8px;
+        }
+        .clothing-item .item-name {
+            font-weight: 600;
+            color: #ECF0F1;
+            font-size: 1rem;
+        }
+        .clothing-item .item-category {
+            color: #27AE60;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 900px) {
+            .main-content { flex-direction: column; align-items: center; }
+            .camera-section, .clothing-section { width: 100%; max-width: 600px; }
+            .camera-container { width: 100%; height: 320px; }
+        }
+        @media (max-width: 600px) {
+            .app { padding: 10px 2px; }
+            .camera-container { height: 220px; }
+            .clothing-section { padding: 12px 2px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="app">
+        <header class="header">
+            <h1>StyleSense AI</h1>
+            <p>Virtual Try-On Experience</p>
+        </header>
+         <nav>
+                <a href="login.html" class="btn">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+                <a href="home.html" class="btn">Home</a>
+            </nav>
+        <main class="main-content">
+            <section class="camera-section">
+                <div class="camera-container">
+                    <video id="webcam" autoplay muted playsinline></video>
+                    <canvas id="overlay-canvas"></canvas>
+                    <div class="demo-mode" id="demo-mode">
+                        <div class="person-silhouette"></div>
+                        <div class="demo-label">Demo Mode - Select clothing to try on</div>
+                    </div>
+                </div>
+                <div class="camera-controls">
+                    <button id="start-camera" class="btn btn-primary">Start Camera</button>
+                    <button id="mirror-toggle" class="btn">Mirror</button>
+                    <button id="screenshot" class="btn">Take Photo</button>
+                   <nav> <a href="payment.html" class="btn">Buy Now</a></nav>
+                </div>
+            </section>
+            <section class="clothing-section">
+                <h2>Choose Your Style</h2>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="tops">Tops</button>
+                    <button class="filter-btn" data-category="bottoms">Bottoms</button>
+                    <button class="filter-btn" data-category="dresses">Dresses</button>
+                </div>
+                <div class="clothing-grid" id="clothing-grid">
+                    <!-- Clothing items will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- MediaPipe Pose & Drawing Utils -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.5/drawing_utils.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

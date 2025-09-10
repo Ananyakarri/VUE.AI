@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StyleSense AI - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #181C23;
+            color: #ECF0F1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: transparent;
+        }
+        .header {
+            text-align: center;
+            margin-top: 48px;
+            margin-bottom: 32px;
+        }
+        nav {
+            margin-top: 18px;
+        }
+        .btn {
+            background: #2C3E50;
+            color: #ECF0F1;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: #E74C3C;
+            color: #fff;
+        }
+        .btn:hover {
+            background: #34495E;
+        }
+        .btn-primary:hover {
+            background: #C0392B;
+        }
+        .home-box {
+            background: #232A34;
+            color: #ECF0F1;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+            padding: 40px 36px 32px 36px;
+            margin-top: 30px;
+            min-width: 320px;
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .home-box h2 {
+            margin-bottom: 18px;
+            color: #ECF0F1;
+            font-size: 1.5rem;
+        }
+        .home-box p {
+            color: #B0B8C1;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .home-box {
+                min-width: 90vw;
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Welcome to StyleSense AI</h1>
+            <nav>
+                <a href="login.html" class="btn">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+                <a href="index.html" class="btn">Virtual Trial</a>
+            </nav>
+        </header>
+        <main>
+            <div class="home-box">
+                <h2>Discover Your Style</h2>
+                <p>With StyleSense AI, you can try on clothes virtually, manage your wardrobe, and get personalized style recommendations.</p>
+                <a href="index.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

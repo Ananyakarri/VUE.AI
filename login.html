@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - StyleSense AI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #181C23;
+            color: #ECF0F1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: transparent;
+        }
+        .header {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 24px;
+        }
+        nav {
+            margin-top: 12px;
+        }
+        .btn {
+            background: #2C3E50;
+            color: #ECF0F1;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: #E74C3C;
+            color: #fff;
+        }
+        .btn:hover {
+            background: #34495E;
+        }
+        .btn-primary:hover {
+            background: #C0392B;
+        }
+        .login-box {
+            background: #232A34;
+            color: #ECF0F1;
+            border-radius: 14px;
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+        }
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        input {
+            background: #2C3E50;
+            color: #ECF0F1;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #E74C3C;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Login</h1>
+            <nav>
+                <a href="home.html" class="btn">Home</a>
+                <a href="register.html" class="btn">Register</a>
+                <a href="index.html" class="btn">Try On Clothes</a>
+            </nav>
+        </header>
+        <main>
+            <div class="login-box">
+                <form class="auth-form">
+                    <label>Email:<br><input type="email" required></label>
+                    <label>Password:<br><input type="password" required></label>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
