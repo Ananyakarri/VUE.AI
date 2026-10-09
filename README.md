@@ -132,10 +132,4 @@ Contributions and suggestions are welcome.
 
 Do not enter real passwords, payment details, or other sensitive information into this demo. Before deployment, implement server-side validation, secure authentication, appropriate data handling, and a trusted payment provider.
 
-## License
-
-No license file was identified in the provided project archive. Add a `LICENSE` file and update this section before distributing or reusing the project.
-
----
-
 **VUE.AI / StyleSense AI** — exploring a more interactive way to preview fashion online.
